@@ -16,7 +16,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Dependency Injection
-builder.Services.AddScoped<ILeaveRequestRepository, InMemoryLeaveRequestRepository>();
+builder.Services.AddSingleton<ILeaveRequestRepository, InMemoryLeaveRequestRepository>();
 builder.Services.AddScoped<LeaveRequestService>();
 
 var app = builder.Build();

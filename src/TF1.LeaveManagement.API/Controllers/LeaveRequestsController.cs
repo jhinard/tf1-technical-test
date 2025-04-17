@@ -15,6 +15,30 @@ namespace TF1.LeaveManagement.API.Controllers
             _leaveRequestService = service;
         }
 
+        /// <summary>
+        /// Retrieves all leave requests.
+        /// </summary>
+        /// <returns>List of leave requests</returns>
+        [HttpGet]
+        public async Task<ActionResult<List<LeaveRequestDto>>> GetAll()
+        {
+            var requests = await _leaveRequestService.GetAllAsync();
+            var result = requests.Select(r => new LeaveRequestDto
+            {
+                Id = r.Id,
+                EmployeeId = r.EmployeeId,
+                StartDate = r.Period.Start,
+                EndDate = r.Period.End,
+                Type = r.Type.ToString(),
+                Comment = r.Comment,
+                Status = r.Status.ToString(),
+                ManagerComment = r.ManagerComment,
+                CreatedAt = r.CreatedAt
+            }).ToList();
+
+            return Ok(result);
+        }
+
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> Submit([FromBody] SubmitLeaveRequestDto dto)

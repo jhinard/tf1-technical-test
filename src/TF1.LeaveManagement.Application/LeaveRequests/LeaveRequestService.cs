@@ -14,6 +14,11 @@ namespace TF1.LeaveManagement.Application.LeaveRequests
             _repository = repository;
         }
 
+        public async Task<List<LeaveRequest>> GetAllAsync()
+        {
+            return await _repository.GetAllAsync();
+        }
+
         public async Task<Guid> SubmitRequest(Guid employeeId, DateTime startDate, DateTime endDate, LeaveType type, string? comment)
         {
             var period = new LeavePeriod(startDate, endDate);

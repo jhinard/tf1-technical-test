@@ -6,5 +6,6 @@ namespace TF1.LeaveManagement.Application.LeaveRequests.Interfaces
     {
         Task SaveAsync(LeaveRequest leaveRequest);
         Task<LeaveRequest?> GetByIdAsync(Guid id);
+        Task<List<LeaveRequest>> GetAllAsync();
     }
 }

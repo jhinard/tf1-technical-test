@@ -18,5 +18,11 @@ namespace TF1.LeaveManagement.Infrastructure.Repositories
             _inMemoryDatabase[leaveRequest.Id] = leaveRequest;
             return Task.CompletedTask;
         }
+
+        public Task<List<LeaveRequest>> GetAllAsync()
+        {
+            var list = new List<LeaveRequest>(_inMemoryDatabase.Values);
+            return Task.FromResult(list);
+        }
     }
 }
