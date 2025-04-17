@@ -17,7 +17,7 @@ namespace TF1.LeaveManagement.API.Middleware
 
                     var response = exception is ValidationException
                         ? new { Message = "Validation failed", Error = exception.Message }
-                        : new { Message = "An unexpected error occurred.", Error = exception?.Message };
+                        : new { Message = "An unexpected error occurred.", Error = exception?.Message ?? "" };
 
                     context.Response.StatusCode = exception is ValidationException ? 400 : 500;
 
