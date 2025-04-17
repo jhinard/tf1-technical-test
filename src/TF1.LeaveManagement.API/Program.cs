@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using TF1.LeaveManagement.API.Middleware;
 using TF1.LeaveManagement.Application.LeaveRequests;
 using TF1.LeaveManagement.Application.LeaveRequests.Interfaces;
 using TF1.LeaveManagement.Infrastructure.Repositories;
@@ -43,6 +44,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseGlobalExceptionHandler();
 
 app.UseAuthorization();
 

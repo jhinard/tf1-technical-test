@@ -1,4 +1,5 @@
-﻿using TF1.LeaveManagement.Domain.Common;
+﻿using System.ComponentModel.DataAnnotations;
+using TF1.LeaveManagement.Domain.Common;
 
 namespace TF1.LeaveManagement.Domain.LeaveRequests.ValueObjects
 {
@@ -10,7 +11,7 @@ namespace TF1.LeaveManagement.Domain.LeaveRequests.ValueObjects
         public LeavePeriod(DateTime start, DateTime end)
         {
             if (end < start)
-                throw new ArgumentException("End date cannot be earlier than start date.");
+                throw new ValidationException("End date cannot be earlier than start date.");
 
             Start = start;
             End = end;

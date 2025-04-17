@@ -2,6 +2,7 @@
 using TF1.LeaveManagement.Domain.LeaveRequests.Enums;
 using TF1.LeaveManagement.Domain.LeaveRequests.ValueObjects;
 using TF1.LeaveManagement.Domain.LeaveRequests;
+using System.ComponentModel.DataAnnotations;
 
 namespace TF1.LeaveManagement.Application.LeaveRequests
 {
@@ -29,14 +30,14 @@ namespace TF1.LeaveManagement.Application.LeaveRequests
 
         public async Task ApproveRequest(Guid requestId, string? managerComment)
         {
-            var request = await _repository.GetByIdAsync(requestId) ?? throw new InvalidOperationException("Request not found");
+            var request = await _repository.GetByIdAsync(requestId) ?? throw new ValidationException("Request not found");
             request.Approve(managerComment);
             await _repository.SaveAsync(request);
         }
 
         public async Task RejectRequest(Guid requestId, string? managerComment)
         {
-            var request = await _repository.GetByIdAsync(requestId) ?? throw new InvalidOperationException("Request not found");
+            var request = await _repository.GetByIdAsync(requestId) ?? throw new ValidationException("Request not found");
             request.Reject(managerComment);
             await _repository.SaveAsync(request);
         }
