@@ -1,10 +1,23 @@
+using System.Text.Json.Serialization;
+using TF1.LeaveManagement.Application.LeaveRequests;
+using TF1.LeaveManagement.Application.LeaveRequests.Interfaces;
+using TF1.LeaveManagement.Infrastructure.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
-builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+builder.Services.AddControllers()
+                .AddJsonOptions(options =>
+                {
+                    options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+                });
 builder.Services.AddOpenApi();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+// Dependency Injection
+builder.Services.AddScoped<ILeaveRequestRepository, InMemoryLeaveRequestRepository>();
+builder.Services.AddScoped<LeaveRequestService>();
 
 var app = builder.Build();
 
@@ -12,6 +25,13 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+
+    app.UseSwagger();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Leave Management API V1");
+        c.RoutePrefix = string.Empty;
+    });
 }
 
 app.UseHttpsRedirection();
