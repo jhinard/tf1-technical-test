@@ -4,12 +4,12 @@
     {
         protected abstract IEnumerable<object> GetAttributesToIncludeInEqualityCheck();
 
-        public override bool Equals(object other)
+        public override bool Equals(object? other)
         {
             return Equals(other as T);
         }
 
-        public bool Equals(T other)
+        public bool Equals(T? other)
         {
             if (other == null)
             {
