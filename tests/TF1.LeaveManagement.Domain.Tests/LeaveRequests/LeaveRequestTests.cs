@@ -2,7 +2,7 @@
 using TF1.LeaveManagement.Domain.LeaveRequests.Enums;
 using TF1.LeaveManagement.Domain.LeaveRequests.ValueObjects;
 
-namespace TF1.LeaveManagement.Domain.Tests
+namespace TF1.LeaveManagement.Domain.Tests.LeaveRequests
 {
     public class LeaveRequestTests
     {
