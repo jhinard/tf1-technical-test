@@ -11,6 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
 		README.md = README.md
+		Test Technique pour le Poste de Tech Lead-V2.pdf = Test Technique pour le Poste de Tech Lead-V2.pdf
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TF1.LeaveManagement.Domain", "src\TF1.LeaveManagement.Domain\TF1.LeaveManagement.Domain.csproj", "{573C4F89-2EC5-4C44-8ECE-8E943C3B8002}"
